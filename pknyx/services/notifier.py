@@ -223,7 +223,7 @@ class Notifier(object):
         """
         Logger().debug("Notifier.datapointNotify(): dp=%s, oldValue=%s, newValue=%s" % (dp, repr(oldValue), repr(newValue)))
 
-        if dp in self._datapointJobs.keys():
+        if dp in self._datapointJobs:
             for method, condition in self._datapointJobs[dp]:
                 if oldValue != newValue and condition == "change" or condition == "always":
                     try:

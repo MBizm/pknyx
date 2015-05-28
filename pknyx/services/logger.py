@@ -137,9 +137,10 @@ class Logger(object):
         @param level: new level, in ('trace', 'debug', 'info', 'warning', 'error', 'exception', 'critical')
         @type level: str
         """
-        if level not in LEVELS.keys():
+        try:
+            self._logger.setLevel(LEVELS[level])
+        except KeyError:
             raise LoggerValueError("Logger level must be in %s" % LEVELS.keys())
-        self._logger.setLevel(LEVELS[level])
 
         if self._logger.level >= logging.INFO:
             streamFormatter = SpaceColorFormatter("")
