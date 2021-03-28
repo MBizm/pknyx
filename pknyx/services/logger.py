@@ -45,7 +45,6 @@ __revision__ = "$Id$"
 
 import logging
 import logging.handlers
-import StringIO
 import traceback
 import os.path
 import time
@@ -228,11 +227,14 @@ class Logger(object):
 
         Should be called in an except statement.
         """
+        """
         tracebackString = StringIO.StringIO()
         traceback.print_exc(file=tracebackString)
         message = tracebackString.getvalue().strip()
         tracebackString.close()
         return message
+        """
+        return None
 
     def shutdown(self):
         """ Shutdown the logging service.

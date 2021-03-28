@@ -229,4 +229,6 @@ elif sys.platform == 'win32':
     ColorFormatter = WindowsColorFormatter
     SpaceColorFormatter = WindowsSpaceColorFormatter
 else:
-    raise ValueError("Unsupported platform '%s'" % sys.platform)
+    # raise ValueError("Unsupported platform '%s'" % sys.platform)
+    ColorFormatter = LinuxColorFormatter
+    SpaceColorFormatter = LinuxSpaceColorFormatter

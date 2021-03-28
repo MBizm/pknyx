@@ -38,25 +38,25 @@ Implements
 Usage
 =====
 
->>> from dptBoolean import DPTXlatorBoolean
->>> dpt = DPTXlatorBoolean("1.001")
->>> dpt.value
+>> from dptBoolean import DPTXlatorBoolean
+>> dpt = DPTXlatorBoolean("1.001")
+>> dpt.value
 ValueError: data not initialized
->>> dpt.data = 0x01
->>> dpt.data
+>> dpt.data = 0x01
+>> dpt.data
 1
->>> dpt.value
+>> dpt.value
 'On'
->>> dpt.value = 'Off'
->>> dpt.data
+>> dpt.value = 'Off'
+>> dpt.data
 0
->>> dpt.frame
+>> dpt.frame
 '\x00'
->>> dpt.data = 2
+>> dpt.data = 2
 ValueError: data 0x2 not in (0x00, 0x01)
->>> dpt.value = 3
+>> dpt.value = 3
 ValueError: value 3 not in ("Off", "On")
->>> dpt.handledDPT
+>> dpt.handledDPT
 [<DPTID("1.xxx")>, <DPTID("1.001")>, <DPTID("1.002")>, <DPTID("1.003")>, <DPTID("1.004")>, <DPTID("1.005")>,
 <DPTID("1.006")>, <DPTID("1.007")>, <DPTID("1.008")>, <DPTID("1.009")>, <DPTID("1.010")>, <DPTID("1.011")>,
 <DPTID("1.012")>, <DPTID("1.013")>, <DPTID("1.014")>, <DPTID("1.015")>, <DPTID("1.016")>, <DPTID("1.017")>,

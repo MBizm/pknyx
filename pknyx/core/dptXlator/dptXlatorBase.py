@@ -93,7 +93,7 @@ class DPTXlatorBase(object):
         """
         self = super(DPTXlatorBase, cls).__new__(cls)
         cls._handledDPT = {}
-        for key, value in cls.__dict__.iteritems():
+        for key, value in cls.__dict__.items():
             if key.startswith("DPT_"):
                 self._handledDPT[value.id] = value
 
@@ -135,8 +135,7 @@ class DPTXlatorBase(object):
 
     @property
     def handledDPT(self):
-        handledDPT = self._handledDPT.keys()
-        handledDPT.sort()
+        handledDPT = sorted(self._handledDPT.keys())
         return handledDPT
 
     @property

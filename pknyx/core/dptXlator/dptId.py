@@ -39,25 +39,25 @@ Implements
 Usage
 =====
 
->>> from dptId import DPTID
->>> dptId = DPTID("1")
+>> from dptId import DPTID
+>> dptId = DPTID("1")
 ValueError: invalid Datapoint Type ID ('1')
->>> dptId = DPTID("1.001")
->>> dptId
+>> dptId = DPTID("1.001")
+>> dptId
 <DPTID("1.001")>
->>> dptId.id
+>> dptId.id
 '1.001'
->>> dptId.main
+>> dptId.main
 '1'
->>> dptId.sub
+>> dptId.sub
 '001'
->>> dptId.generic
+>> dptId.generic
 <DPTID("1.xxx")>
->>> dptId.generic.main
+>> dptId.generic.main
 '1'
->>> dptId.generic.sub
+>> dptId.generic.sub
 'xxx'
->>> dptId.generic.generic
+>> dptId.generic.generic
 <DPTID("1.xxx")>
 
 @author: Frédéric Mantegazza
@@ -137,7 +137,7 @@ class DPTID(object):
         @rtype: int
         """
         if self.main != other.main:
-            return cmp(int(self.main), int(other.main))
+            return DPTID.cmp(int(self.main), int(other.main))
         elif self.sub == other.sub:
             return 0
         elif self.sub == "xxx":
@@ -145,7 +145,12 @@ class DPTID(object):
         elif other.sub == "xxx":
             return 1
         else:
-            return cmp(self.sub, other.sub)
+            return DPTID.cmp(self.sub, other.sub)
+
+    # https://portingguide.readthedocs.io/en/latest/comparisons.html
+    @staticmethod
+    def cmp(x, y):
+        return (x > y) - (x < y)
 
     @property
     def id(self):
@@ -204,8 +209,8 @@ if __name__ == '__main__':
             pass
 
         def test_display(self):
-            print repr(self.dptId)
-            print self.dptId1
+            print(repr(self.dptId))
+            print(self.dptId1)
 
         def test_constructor(self):
             with self.assertRaises(DPTIDValueError):
